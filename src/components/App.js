@@ -4,6 +4,8 @@ import Dashboard from "./Dashboard";
 import Login from "./Login";
 import ForgetPassword from "./ForgetPassword"
 import UpdateProfile from "./UpdateProfile";
+import Currency from  "./Currency"
+import CurrencyList from  "./CurrencyList"
 import {Container} from "react-bootstrap";
 import {AuthProvider} from "../contexts/AuthContext";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -13,13 +15,15 @@ function App() {
 
       <Container className="d-flex align-items-center justify-content-center"
       style={{minHeight:"100vh"}}>
-          <div className="w-100" style={{maxWidth:"400px"}}>
+          <div className="w-100" style={{maxWidth:"100%"}}>
 
           <Router>
               <AuthProvider>
                   <Switch>
                       <PrivateRoute exact path="/" component={Dashboard}/>
                       <PrivateRoute path="/update-profile" component={UpdateProfile}/>
+                      <PrivateRoute exact path="/currency" component={CurrencyList } />
+                      <PrivateRoute path="/currency/:slug" component={Currency} />
                       <Route path="/signup" component={Signup}/>
                       <Route path="/login" component={Login}/>
                       <Route path="/forget-password" component={ForgetPassword}/>
