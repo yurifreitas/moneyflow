@@ -22,6 +22,7 @@ export default function CurrencyList() {
             {
                 headers: {
                     'Accept': 'application/json',
+                    'Access-Control-Allow-Origin':"*",
                     'Content-Type': 'application/json;charset=UTF-8'
                 }
                 }).then(res=>{
