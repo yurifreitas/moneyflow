@@ -21,7 +21,8 @@ export default function CurrencyList() {
         axios.get("https://api.hgbrasil.com/finance?key=8c8d7bd9",
             {
                 headers: {
-                    "Access-Control-Allow-Origin": "*",
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8'
                 }
                 }).then(res=>{
             console.log(res);
