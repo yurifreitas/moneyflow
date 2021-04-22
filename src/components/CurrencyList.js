@@ -17,8 +17,13 @@ export default function CurrencyList() {
         }
     )
     useEffect(() => {
-        axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*'
-        axios.get("https://api.hgbrasil.com/finance?key=8c8d7bd9").then(res=>{
+        
+        axios.get("https://api.hgbrasil.com/finance?key=8c8d7bd9",
+            {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                }
+                }).then(res=>{
             console.log(res);
         })
     });
