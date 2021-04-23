@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+
 export default function CurrencyList() {
     const [currency, setCurrency] = useState(
         {
@@ -17,18 +18,18 @@ export default function CurrencyList() {
         }
     )
     useEffect(() => {
-        axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-        axios.get("https://api.hgbrasil.com/finance?key=8c8d7bd9",
-            {
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Headers': '*',
-                    'Content-Type': 'application/json',
-                },
-                crossdomain: true,
-                }).then(res=>{
+        const headers = {
+            'Content-Type': 'text/plain',
+
+        };
+        /*https://api.hgbrasil.com/finance?key=8c8d7bd9*/
+        axios.get("https://api.hgbrasil.com/finance", {headers}
+        ).then(res => {
             console.log(res);
         })
+        fetch("https://api.hgbrasil.com/finance?key=8c8d7bd9", {
+            method: 'GET',
+        }).then(response => console.log(response))
     });
     return (
         <>
@@ -37,7 +38,7 @@ export default function CurrencyList() {
                 {
                     Object.keys(currency.currencies).map((item, i) => (
                         <li className="travelcompany-input" key={i}>
-                            <span className="input-label">{ currency.currencies[item].name }</span>
+                            <span className="input-label">{currency.currencies[item].name}</span>
                         </li>
                     ))
                 }
