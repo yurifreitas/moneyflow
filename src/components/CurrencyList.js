@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-
+import {Card, Button, Alert} from "react-bootstrap"
+import {Link} from "react-router-dom";
 export default function CurrencyList() {
     const [currency, setCurrency] = useState(
         {
@@ -23,7 +24,7 @@ export default function CurrencyList() {
 
         };
         /*https://api.hgbrasil.com/finance?key=8c8d7bd9*/
-        axios.get("https://api.hgbrasil.com/finance?key=bfdbe6e0", {headers}
+        axios.get("https://api.hgbrasil.com/finance?format=json-cors&key=bfdbe6e0", {headers}
         ).then(res => {
             console.log(res);
         })
@@ -34,9 +35,18 @@ export default function CurrencyList() {
                 <h2>CurrencyList</h2>
                 {
                     Object.keys(currency.currencies).map((item, i) => (
-                        <li className="travelcompany-input" key={i}>
-                            <span className="input-label">{currency.currencies[item].name}</span>
-                        </li>
+
+
+
+                        <Card className="mb-4" key={i}>
+                            <Card.Header>{currency.currencies[item].name}</Card.Header>
+                            <Card.Body>
+                                    <span className="input-label">{currency.currencies[item].name}</span>
+                            </Card.Body>
+                            <Link to={"/currency/"+item} className="btn btn-primary w-100 mt-3">ver mais</Link>
+                        </Card>
+
+
                     ))
                 }
             </div>
