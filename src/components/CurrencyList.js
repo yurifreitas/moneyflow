@@ -19,17 +19,14 @@ export default function CurrencyList() {
     )
     useEffect(() => {
         const headers = {
-            'Content-Type': 'text/plain',
+            'Content-Type': 'application/json',
 
         };
         /*https://api.hgbrasil.com/finance?key=8c8d7bd9*/
-        axios.get("https://api.hgbrasil.com/finance", {headers}
+        axios.get("https://api.hgbrasil.com/finance?key=bfdbe6e0", {headers}
         ).then(res => {
             console.log(res);
         })
-        fetch("https://api.hgbrasil.com/finance?key=8c8d7bd9", {
-            method: 'GET',
-        }).then(response => console.log(response))
     });
     return (
         <>
