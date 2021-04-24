@@ -6,6 +6,7 @@ import ForgetPassword from "./ForgetPassword"
 import UpdateProfile from "./UpdateProfile";
 import Currency from  "./Currency"
 import CurrencyList from  "./CurrencyList"
+import Stock from "./Stock"
 import {Container} from "react-bootstrap";
 import {AuthProvider} from "../contexts/AuthContext";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -22,6 +23,7 @@ function App() {
                   <Switch>
                       <PrivateRoute exact path="/" component={CurrencyList}/>
                       <PrivateRoute path="/update-profile" component={UpdateProfile}/>
+                      <PrivateRoute path="/stock/:slug" component={Stock} />
                       <PrivateRoute path="/currency/:slug" component={Currency} />
                       <Route path="/signup" component={Signup}/>
                       <Route path="/login" component={Login}/>
