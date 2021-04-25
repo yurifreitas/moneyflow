@@ -1,61 +1,72 @@
 import {
+    Link,
     useParams
 } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Card} from "react-bootstrap";
-import {Line, LineChart} from "recharts";
+import {Card, Row} from "react-bootstrap";
+import {Legend, Line, LineChart, ResponsiveContainer, Tooltip} from "recharts";
 
 export default function Currency() {
     let {slug} = useParams();
     const [stock, setStock] = useState()
-    const [data, setData] = useState(
-        []
-    )
-    setData([
+    const [data, setData] = useState([
         {
             name: 'Page A',
             uv: 4000,
-            pv: 2400,
+            preco: 5.000,
             amt: 2400,
         },
         {
             name: 'Page B',
             uv: 3000,
-            pv: 1398,
+            preco: 5.998,
             amt: 2210,
         },
         {
             name: 'Page C',
             uv: 2000,
-            pv: 9800,
+            preco: 6.000,
             amt: 2290,
         },
         {
             name: 'Page D',
             uv: 2780,
-            pv: 3908,
+            preco: 6.500,
             amt: 2000,
         },
         {
             name: 'Page E',
             uv: 1890,
-            pv: 4800,
+            preco: 4.800,
             amt: 2181,
         },
         {
             name: 'Page F',
             uv: 2390,
-            pv: 3800,
+            preco: 3.800,
             amt: 2500,
         },
         {
             name: 'Page G',
             uv: 3490,
-            pv: 4300,
+            preco: 4.300,
+            amt: 2100,
+        },
+        {
+            name: 'Page G',
+            uv: 3490,
+            preco: 5.000,
+            amt: 2100,
+        },
+        {
+            name: 'Page G',
+            uv: 3490,
+            preco: 3.000,
             amt: 2100,
         },
     ])
+
     useEffect(() => {
         const headers = {
             'Content-Type': 'application/json',
@@ -69,8 +80,8 @@ export default function Currency() {
             Object.keys(res.data.results.stocks).map((item, i) => {
                 if (item == slug) {
                     console.log(item)
-                    values.push({"pv": res.data.results.stocks[item].buy})
-                    /*setData("pv":result[item].buy)*/
+                    values.push({"preco": res.data.results.stocks[item].buy})
+                    /*setData("preco":result[item].buy)*/
                 }
             })
             console.log(data)
@@ -81,6 +92,9 @@ export default function Currency() {
     return (
         <>
             <div style={{padding: 20}}>
+                <Row className="mb-4">
+                    <Link to="/">VOLTAR</Link>
+                </Row>
                 <h2 className="text-center">Cotação da ação</h2>
                 {stock ?
                     Object.keys(stock).map((item, i) => (
@@ -88,14 +102,20 @@ export default function Currency() {
                         (
                             <Card className="mb-4 text-center" key={i}>
                                 <Card.Header>{stock[item].name}</Card.Header>
-                                <Card.Body>
+                                <Card.Body className="overflow-auto">
+
                                     {data && (
+
                                         <LineChart  width={300} height={100} data={data}>
-                                            <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2}/>
+                                            <Tooltip />
+                                            <Legend />
+                                            <Line type="monotone" dataKey="preco" stroke="#8884d8" strokeWidth={2}/>
                                         </LineChart>
+
                                     )
                                     }
                                 </Card.Body>
+                                <Card.Footer className="text-muted">Pontos: {stock[item].point}</Card.Footer>
                             </Card>)
 
 
