@@ -3,7 +3,7 @@ import {
     useParams
 } from "react-router-dom";
 import React, {useEffect, useState} from "react";
-
+import "./style.css"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import {Container, Row} from "react-bootstrap";
 import axios from "axios";
@@ -119,7 +119,14 @@ export default function Currency() {
                                         )
                                     }
                                 </Card.Body>
-                                <Card.Footer className="text-muted">Preço: {currency[item].buy}</Card.Footer>
+                                <Card.Footer className="text-muted ">
+
+                                    <span
+                                        className={"input-label " + (currency[item].variation == 0 ? "text-primary" : currency[item].variation < 0 ? "text-danger" : "text-success")}>
+                                        Preço: R$ {currency[item].buy}<br/>
+                                        {currency[item].variation}%
+                                    </span>
+                                </Card.Footer>
                             </Card>)
 
 

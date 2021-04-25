@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import "./style.css"
 import {Card, Row} from "react-bootstrap";
 import {Legend, Line, LineChart, ResponsiveContainer, Tooltip} from "recharts";
 
@@ -100,7 +101,7 @@ export default function Currency() {
                     Object.keys(stock).map((item, i) => (
                         item == slug &&
                         (
-                            <Card className="mb-4 text-center" key={i}>
+                            <Card className="mb-4 text-center" key={i} border={stock[item].variation == 0 ? "primary" : stock[item].variation > 0 ? "success" : "danger"}>
                                 <Card.Header>{stock[item].name}</Card.Header>
                                 <Card.Body className="overflow-auto">
 
@@ -115,7 +116,10 @@ export default function Currency() {
                                     )
                                     }
                                 </Card.Body>
-                                <Card.Footer className="text-muted">Pontos: {stock[item].point}</Card.Footer>
+                                <Card.Footer className="text-muted">
+                                    <span
+                                        className={"input-label " + (stock[item].variation == 0 ? "text-primary" : stock[item].variation < 0 ? "text-danger" : "text-success")}> Pontos: {stock[item].points}<br/>{stock[item].variation}%</span>
+                                </Card.Footer>
                             </Card>)
 
 
