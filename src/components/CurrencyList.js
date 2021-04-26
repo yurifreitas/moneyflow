@@ -23,6 +23,7 @@ export default function CurrencyList() {
     return (
         <>
             <div style={{padding: 20}}>
+                <Link to="/profile" className="btn btn-primary ">Perfil</Link>
                 <h2 className="mb-4 text-center">Cotação de moedas</h2>
                 {currency ? Object.keys(currency).map((item, i) => (
 

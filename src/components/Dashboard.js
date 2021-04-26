@@ -17,6 +17,7 @@ export default function Dashboard(){
     }
     return (
         <>
+            <Link to="/" className="btn btn-primary w-100 mb-3">Home</Link>
         <Card>
             <Card.Body>
                 <h2 className="text-center mb-4">Perfil</h2>

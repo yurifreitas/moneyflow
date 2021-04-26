@@ -94,7 +94,8 @@ export default function Currency() {
         <>
             <div style={{padding: 20}}>
                 <Row className="mb-4">
-                    <Link to="/">VOLTAR</Link>
+                    <Link to="/profile" className="btn btn-primary ">Perfil</Link>
+                    <Link to="/" className="btn btn-primary ">VOLTAR</Link>
                 </Row>
                 <h2 className="text-center">Cotação da ação</h2>
                 {stock ?

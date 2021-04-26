@@ -97,7 +97,9 @@ export default function Currency() {
         <>
             <div style={{padding: 20}}>
                 <Row className="mb-4">
-                <Link to="/">VOLTAR</Link>
+                    <Link to="/" className="btn btn-primary ">VOLTAR</Link>
+                    <Link to="/profile" className="btn btn-primary ml-auto">Perfil</Link>
+
                 </Row>
                 <h2 className="text-center">Cotação da moeda</h2>
                 {currency?

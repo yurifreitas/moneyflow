@@ -22,6 +22,7 @@ function App() {
               <AuthProvider>
                   <Switch>
                       <PrivateRoute exact path="/" component={CurrencyList}/>
+                      <PrivateRoute path="/profile" component={Dashboard}/>
                       <PrivateRoute path="/update-profile" component={UpdateProfile}/>
                       <PrivateRoute path="/stock/:slug" component={Stock} />
                       <PrivateRoute path="/currency/:slug" component={Currency} />
